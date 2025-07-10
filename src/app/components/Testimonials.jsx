@@ -5,7 +5,6 @@ function Testimonials() {
     return (
         <div className="bg-slate-900">
             <h1 className="text-4xl font-bold text-center p-2 text-white">What Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-500 to-amber-600 "> Customers Say</span></h1>
-            {/* <div className="h-1 w-18 flex justify-center rounded mt-2 bg-gradient-to-r from-amber-300 via-amber-500 to-amber-600"></div> */}
 
 
             <p className=" text-xl font-bold p-2 text-gray-400 text-center">Don&apos;t just take our word for it. See what our customers have to say about their Eastern-Zaika experience.</p>
