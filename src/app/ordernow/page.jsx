@@ -1,9 +1,28 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Search, Star } from 'lucide-react';
+import { useCart } from "react-use-cart";
 
 function AllItem() {
     const [activeTab, setActiveTab] = useState("all items");
+    const [isHydrated, setIsHydrated] = useState(false);
+    const { addItem, items: cartItems } = useCart(); // Changed from menuItems to items
+
+    useEffect(() => {
+        setIsHydrated(true);
+    }, []);
+
+    // Function to check if item is in cart - with proper null checking
+    const isItemInCart = (item) => {
+        if (!isHydrated || !cartItems) return false;
+        return cartItems.some(cartItem => cartItem.id === item.id);
+    };
+
+    const goToCart = () => {
+        // For example: router.push('/cart') or navigate('/cart')
+        console.log('Navigate to cart');
+        // window.location.href = '/cart'; 
+    };
 
     const menuItems = [
         // Drinks
@@ -161,6 +180,11 @@ function AllItem() {
         }
     ];
 
+    // Filter items based on active tab
+    const filteredItems = activeTab === 'all items' 
+        ? menuItems 
+        : menuItems.filter(item => item.category === activeTab);
+
     return (
         <div className='min-h-screen bg-slate-900'>
             <div className='max-w-7xl mx-auto p-2 py-6'>
@@ -172,11 +196,10 @@ function AllItem() {
                         <input
                             type='search'
                             placeholder="search here..."
-                            className="border border-gray-600 text-white rounded w-full p-2 pl-10 mt-3"
+                            className="border border-gray-600 text-white rounded w-full p-2 pl-10 mt-3 bg-gray-800"
                         />
                     </div>
                 </div>
-
 
                 <div className="flex flex-wrap gap-2 justify-start mt-4 font-semibold">
                     <button
@@ -236,7 +259,7 @@ function AllItem() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-5">
-                    {menuItems.map((item) => (
+                    {filteredItems.map((item) => (
                         <div
                             key={item.id}
                             className="bg-gray-800 rounded-xl overflow-hidden hover:bg-gray-750 transition-colors duration-300"
@@ -247,7 +270,7 @@ function AllItem() {
                                     <img
                                         src={item.image}
                                         alt={item.name}
-                                        className='h-full'
+                                        className='h-full w-full object-cover'
                                     />
                                 </div>
 
@@ -286,9 +309,21 @@ function AllItem() {
                                         <button className="flex-1 px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 font-medium">
                                             Customize
                                         </button>
-                                        <button className="flex-1 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-lg transition-colors duration-200 font-medium">
-                                            Add to Cart
-                                        </button>
+                                        {isItemInCart(item) ? (
+                                            <button
+                                                onClick={goToCart}
+                                                className='text-white px-3 py-1 sm:px-3 sm:py-1 font-bold rounded-lg bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:from-green-500 hover:via-green-600 hover:to-green-700 text-sm sm:text-base w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:shadow-lg'
+                                            >
+                                                Go to Cart
+                                            </button>
+                                        ) : (
+                                            <button
+                                                onClick={() => addItem(item)}
+                                                className='text-white px-3 py-1 sm:px-3 sm:py-1 font-bold rounded-lg bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 hover:from-amber-500 hover:via-amber-600 hover:to-amber-700 text-sm sm:text-base w-full sm:w-auto transition-all duration-300 hover:scale-105 hover:shadow-lg'
+                                            >
+                                                Add to Order
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             </div>

@@ -13,6 +13,7 @@ function contact() {
     ];
 
     return (
+        <>
         <div className='bg-slate-900 min-h-screen'>
             <div className='flex justify-center p-4 mt-4'>
                 <button className='bg-[#3b1b27] px-3 py-2 text-sm rounded-full text-[#cc6e71] items-center text-center'>Find Us</button>
@@ -158,7 +159,7 @@ function contact() {
                                             <div>
                                                 <span className="text-amber-400 font-medium">Email: </span>
                                                 <a href="mailto:info@Easternparadise.com" className="text-gray-300 hover:text-white transition-colors">
-                                                    info@Easternparadise.com
+                                                    info@Easternzaika.com
                                                 </a>
                                             </div>
                                         </div>
@@ -167,7 +168,7 @@ function contact() {
                                             <div>
                                                 <span className="text-amber-400 font-medium">Reservations: </span>
                                                 <a href="mailto:reservations@Easternparadise.com" className="text-gray-300 hover:text-white transition-colors">
-                                                    reservations@Easternparadise.com
+                                                    reservations@Easternzaika.com
                                                 </a>
                                             </div>
                                         </div>
@@ -204,8 +205,10 @@ function contact() {
                 </div>
             </div>
 
-            {/* Getting Here Section */}
-            <div className="max-w-7xl mx-auto mt-26 mb-8">
+           
+            </div>
+             {/* Getting Here Section */}
+            <div className="max-w-7xl mt-32 mx-auto mb-8">
                     <div className="text-center mb-8">
                         <h2 className="text-3xl font-bold text-white mb-2">
                             Getting <span className="text-amber-500">Here</span>
@@ -259,7 +262,7 @@ function contact() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </>
     )
 }
 

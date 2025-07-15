@@ -10,7 +10,7 @@ function PopularDishes() {
             <div className="flex flex-col lg:flex-row justify-center items-center gap-8 px-4">
                 <div className="shadow-md shadow-slate-700 h-auto w-full max-w-96">
                     <img
-                        src='/images/food.jpg'
+                        src='/images/falafel.jpeg'
                         alt="product-img"
                         className="w-full object-cover p-2 rounded-lg"
                     />
@@ -27,7 +27,7 @@ function PopularDishes() {
                 </div>
                 <div className="shadow-md shadow-slate-700 h-auto w-full max-w-96">
                     <img
-                        src='/images/food.jpg'
+                        src='/images/hummus.jpg'
                         alt="product-img"
                         className="w-full object-cover p-2 rounded-lg"
                     />
@@ -44,7 +44,7 @@ function PopularDishes() {
                 </div>
                 <div className="shadow-md shadow-slate-700 h-auto w-full max-w-96">
                     <img
-                        src='/images/food.jpg'
+                        src='/images/kofta.jpg'
                         alt="product-img"
                         className="w-full object-cover p-2 rounded-lg"
                     />
